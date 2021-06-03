@@ -343,6 +343,18 @@ DNS
 
 REST와 RESTUful
 -----
+* REST
+    * 특징
+        * Server-Client 구조
+        * Stateless
+        * Cacheable
+        * Layered System
+        * Code-On-Demand(optional)
+        * Uniform Interface
+
+* REST API
+
+* RESTful : REST원리를 따르는 시스템
 
 SOCKET
 -----

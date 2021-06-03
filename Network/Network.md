@@ -110,7 +110,7 @@ TCP 와 UDP 헤더 : 상위 계층으로 데이터를 받아 헤더를 추가한
     * (16) Length : 헤더 + 데이터 포함 전체 길이
     * (16) CheckSum : 헤더와 데이터 에러 확인 용도
 
-TCP :: 3 way hadnshake , 4 way hadnshake
+TCP : 3 way hadnshake, 4 way hadnshake
 -----
 * 3 way handshake : 네트워크 연결을 설정 (Connection Establish)
     * 순서
@@ -140,9 +140,21 @@ TCP :: 3 way hadnshake , 4 way hadnshake
 
     * 초기 Sequence Number인 ISN을 0 부터 시작하지 않는 이유는 ?
         * Connection을 맺을 때 사용하는 포트는 유한한 범위 내에서 사용하고 시간이 지남에 따라 재사용 된다. 따라서 두 통신 호스트가 과거에 사용된 포트 번호 쌍을 사용할 가능성이 존재한다. 서버 측에서는 패킷의 SYN을 보고 패킷을 구분하게 되는데 난수가 아닌 순차적인 Number가 전송된다면 이전의 Connection으로부터 오는 패킷으로 인식할 수 있다. 이런 문제가 발생할 가능성을 줄이기 위해 난수를 생성해서 설정한다.
-        
-HTTP와 HTTPS
+
+HTTP와 HTTPS : HyperText Transfer Protocol (over Secure Socket Layer)
 -----
+* HTTP 프로토콜 : HyperText Transfer Protocol
+    * 웹 상에서 Client와 Server 간에 request/response로 정보를 주고 받을 수 있는 프로토콜
+    * 특징
+        * 주로 HTML 문서를 주고 받는데 사용
+        * TCP, UDP 사용, 80번 포트 사용
+        * Connectionless : Client가 요청을 보내고 Server가 응답을 하면 연결이 끊어진다
+        * Stateless : 연결을 끊는 순간 통신은 끝나며 상태 정보를 유지하지 않는다
+
+* HTTPS 프로토콜 : HyperText Transfer Protocol over Secure Socket Layer
+
+
+
 
 HTTP 요청 응답 헤더
 -----

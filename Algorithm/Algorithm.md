@@ -63,6 +63,21 @@ int main(void){
     }
     ```
 
+    * 재귀를 이용한 구현
+    ```cpp
+    vector<long long> DP(n+1,0);
+    int Fibo(int n){
+        if( n < 2 ) return n;
+        
+        if (DP[n] != 0) return DP[n];
+
+        return DP[n] = Fibo(n-1) + Fibo(n-2);
+    }
+    int main(void){
+        cout << Fibo(n) << endl;
+    }
+    ```
+
 정렬 알고리즘
 -----
 

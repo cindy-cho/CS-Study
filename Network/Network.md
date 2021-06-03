@@ -180,7 +180,49 @@ HTTP와 HTTPS : HyperText Transfer Protocol (over Secure Socket Layer)
 
 HTTP 요청 응답 헤더
 -----
+* General Header : 요청 및 응답 메세지 모두에서 사용 가능한 기본 헤더 항목
+    * Date : HTTP 메시지 생성 일시
+    * Connection : 연결에 대한 옵션 설정
+    * Cache-Control
+    * Pragma
+    * Trailer
 
+* Entity Header : 요청 및 응답 메세지 모두에서 사용 가능한 Entity 설명 헤더
+    * Content-Type : 미디어 타입, 문자 인코딩 방식
+    * Content-Encoding : 데이터 압축 방식
+    * Content_Length : 데이터 길이 (Bytes)
+    * Content-Location
+    * Content-Disposition : 브라우저 표시 방식, inline - 화면 표시, attachment - 다운로드
+    * Content-Security-Policy : 다른 외부 파일을 불러오는 경우 차단할 소스와 불러올 소스 명시
+    * Location : 리다이렉트 된 때에 이동된 주소, 새로 생성된 리소스 주소
+    * Last-Modified : 리소스를 마지막으로 갱신한 날짜
+
+* Request Header : 요청 메세지
+    * Host
+    * User-Agent
+    * From
+    * Cookie
+    * Referer
+    * If-Modified-Since
+    * Authorization
+    * Origin
+    * Body 속성
+        * Accept
+        * Accept-Charset
+        * Accept-Encoding
+        * Accept-Language
+
+* Response Header : 응답 메세지
+    * Server
+    * Accept-Range
+    * Set-Cookie
+    * Expires
+    * Age
+    * ETag
+    * Proxy-Authenticate
+    * Allow
+    * Access-Control-Allow-Origin
+    
 HTTP와 HTTPS 동작 과정
 -----
 

@@ -18,7 +18,12 @@ Fibonacci : 1 1 2 3 5 8 ...
 * 재귀를 이용한 구현
 ```cpp
 int Fibo(int n){
+    if( n >= 2 ) return Fibo(n-1) + Fibo(n-2);
+    return n;
+}
 
+int main(void){
+    cout << Fibo(n) << endl;
 }
 ```
 

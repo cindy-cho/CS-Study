@@ -152,9 +152,31 @@ HTTP와 HTTPS : HyperText Transfer Protocol (over Secure Socket Layer)
         * Stateless : 연결을 끊는 순간 통신은 끝나며 상태 정보를 유지하지 않는다
 
 * HTTPS 프로토콜 : HyperText Transfer Protocol over Secure Socket Layer
-
-
-
+    * 웹 통신 프로토콜인 HTTP의 보안이 강화된 버전
+    * 특징
+        * 기본 TCP/IP 443번 포트 사용
+        * 웹 상에서 정보를 암호화 하는 SSL이나 TLS프로토콜을 통해 세션 데이터를 암호화 한다
+            * SSL(Secure Socket Layer)
+            * TLS(Transport Layer Security) : SSL에서 발전한 프로토콜
+            * SSL, TLS는 사생활 보호, 데이터 무결성, ID 및 디지털 인증서를 사용한 인증 제공
+        * 데이터의 적절한 보호 보장
+            * 보호의 수준은 웹브라우저에서의 구현 정확도와 서버 소프트웨어, 지원되는 암호화 알고리즘에 달려있다
+    * 원리
+        * 공개키 알고리즘 방식
+        * 공개키, 개인키를 이용한 암호화 방법
+            * 공개키 : 모두에게 공개, 공개키 저장소에 등록
+            * 개인키(비공개키) : 개인에게만 공개. Client-Server에서는 Server가 비공개키를 가지고 있다
+        * Client -> Server
+            * 사용자의 데이터를 공개키로 암호화
+            * 서버로 전송 (데이터를 가로채도 개인키가 없으므로 복호화 불가)
+            * 서버의 개인키를 통해 복호화하여 요청 처리
+    * 장점
+        * 네트워크 상에서 열람, 수정이 불가능하기 때문에 안전하다
+    * 단점
+        * 암호화 과정에 웹서버에 부하를 준다
+        * 설치 및 인증서 유지에 추가 비용 발생
+        * HTTP에 비해 느리다
+        * 인터넷 연결이 끊긴 경우 재인증 시간이 소요된다
 
 HTTP 요청 응답 헤더
 -----

@@ -13,8 +13,14 @@ DFS와 BFS
     * 사용 하는 경우 : 최단 경로 혹은 임의의 경로를 찾는 경우
 
 
-Fibonacci에서의 Recursion, DP, Loop 방식
+Fibonacci : 1 1 2 3 5 8 ...
 -----
+* 재귀를 이용한 구현
+'''c++
+int Fibo(int n){
+
+}
+'''
 
 정렬 알고리즘
 -----

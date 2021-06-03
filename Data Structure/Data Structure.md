@@ -4,7 +4,7 @@ Array
 -----
 Linked List
 -----------
-HashTable
+HashTable : (Key, Value)로 데이터를 저장하는 자료구조
 ---------
 * 개념
     * Key와 Value를 1:1로 matching 하여 저장하는 자료구조
@@ -24,11 +24,14 @@ HashTable
     * 중복이 많을수록 탐색 시간 복잡도 증가 : O(1) -> O(N)
 
 * Hash 충돌 해결방법
-    * Seperating Chaining
-        * JDK 내부에서 사용하는 충돌 처리 방식
-            * 데이터 6개 이하 : Linked List
-            * 데이터 8개 이상 : Red-Black Tree
-
+    * Seperating Chaining (분리 연결법)
+        * Linked List, Red-Black Tree
+        * 동일한 Hash Bucket에 대해서 추가 메모리를 사용하여 저장한다.
+        * 장점 : 해시 테이블 확장 없이 간단하게 구현 가능.
+        * 단점 : 데이터의 수가 많아지면 효율성이 감소.
+    * Open Addressing (개방 주소법)
+        - 비어있는 
+        *
 Stack
 -----
 Queue

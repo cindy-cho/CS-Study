@@ -54,12 +54,12 @@ int main(void){
             cout << n << endl;
             return 0;
         }
-        int a=0, b=1
-        for(int i=2 ; i<=n ; i++){
-            a = a+b;
-            swap(a,b);
-        }
-        cout << b << endl;
+        vector<long long> DP(n+1);
+        DP[0] = 0; DP[1] = 1;
+        for(int i=2 ; i<=n ; i++)
+            DP[i] = DP[i-1] + DP[i-2];
+        
+        cout << DP[n] << endl;
     }
     ```
 

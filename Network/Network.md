@@ -222,17 +222,88 @@ HTTP 요청 응답 헤더
     * Proxy-Authenticate
     * Allow
     * Access-Control-Allow-Origin
-    
+
 HTTP와 HTTPS 동작 과정
 -----
+* HTTP 동작 과정
+    * 서버 접속 -> 클라이언트 -> 요청 -> 서버 -> 응답 -> 클라이언트 -> 연결 종료
+    1. 사용자가 웹 브라우저에 URL 주소 입력
+    2. DNS 서버에 웹 서버의 호스트 이름을 IP 주소로 변경 요청
+    3. 웹 서버와 TCP 연결 시도 : 3-way Handshaking
+    4. 클라이언트가 서버에게 요청
+        * HTTP Request Message = Request Header + 빈 줄 + Request Body
+            * Request Header = Method + URL + Protocol Ver
+            * 빈 줄
+            * Request Body
+    5. 서버가 클라이언트에게 데이터 응답
+        * HTTP Response Message = Response Header + 빈 줄 + Response Body
+            * Response Header = Protocol Ver + Code + Message
+            * 빈 줄
+            * Response Body
+    6. 서버-클라이언트 연결 종료
+    7. 웹 브라우저가 웹문서 출력
 
-CORS
+* HTTPS 동작 과정
+    * 공개키 암호와 방식과 대칭키 암호화 방식의 장점을 활용한 하이브리드 사용
+        * 데이터를 대칭기 방식으로 암복호화 하고, 공개키 방식으로 대칭키 전달
+    1. 클라이언트가 서버에 접속, Handshaking 과정에서 서로 탐색
+        1.1. Client Hello
+        1.2. Server Hello
+        1.3. Client 인증 확인
+        1.4. Server 인증 확인
+        1.5. Handshaking 종료
+    2. 데이터 전송
+    3. 연결 종료 및 session key 폐기
+
+CORS : Cross Origin Resource Sharing
 -----
+* CORS : 웹 서버에게 보안 cross-domain 데이터 전송을 활성화하는 접근 제어권 부여
+* 과정
+    1. Options 주소로 서버가 CORS를 허용하는지 물어본다
+    2. Access-Control-Request-Method로 실제로 보내고자 하는 method를 알린다
+    3. Access-Control-Request-Header로 실제로 보내고자 하는 header를 알린다
+    4. Allow 항목은 Request에 대응되는 것으로, 서버가 허용하는 method와 header 응답에 사용
+    5. Reqeust와 Allow가 일치하면 CORS 요청이 이루어진다
 
-GET 과 POST
+GET 과 POST : 서버에 데이터를 전달할 때 사용하는 방식
 -----
+* GET
+    * 개념
+        * 정보를 조회하기 위한 method
+        * 서버에서 어떤 데이터를 가져와서 보여주기 위한 용도
+        * Select
+    * 사용 방법
+        * URL 끝에 '?', 요청 정보는 (Key, Value)로 쌍을 이루어 ? 뒤에 붙어서 서버로 전송
+        * 요청 정보가 여러 개일 경우에는 & 로 구분
+    * 특징
+        * URL에 요청 정보를 붙여서 전송
+        * URL에 붙이기 때문에 길이 제한이 있어 대용량 데이터 전송이 어렵다
+        * 요청 정보를 사용자가 눈으로 확인 가능 (POST 보다 보안상 취약)
+        * HTTP 패킷의 Body는 비어있는 상태로 전송
+        * POST 보다 빠르다
+        * 캐싱 사용 가능
 
-COOKIE 와 SESSION
+* POST
+    * 개념
+        * 서버의 값이나 상태를 바꾸기 위한 method
+        * Insert, Update, Delete
+    * 사용 방법
+        * 요청 정보를 HTTP 패킷의 Body에 숨겨서 서버로 전송
+        * Request Header의 Content-Type에 해당 데이터 타입 표현
+    * 특징
+        * 대용량 데이터 전송에 적합
+        * 클라이언트는 인코딩 하여 서버로 전송, 서버는 디코딩 한다
+        * GET 보다 보안상 안전
+
+* Related Question
+    * 조회하기 위한 용도로 POST 가 아닌 GET 방식을 사용하는 이유?
+        * 설계 원칙에 따라 GET 방식은 서버에게 여러번 요청 하더라도 동일한 응답이 돌아와야 한다
+            * GET 은 가져오는 것으로 서버의 데이터나 상태를 변경시키지 않아야 한다
+            * POST 는 수행하는 것으로 서버의 데이터나 상태를 바꾸기 위한 용도이다
+        * 웹에서 모든 리소스는 Link할 수 있는 URL을 가지고 있어야 한다
+            * POST 방식을 사용할 경우 URL 정보가 Body에 있기 때문에 URL만 전달 할 수 없다.
+
+COOKIE 와 SESSION :  🍪
 -----
 
 DNS
